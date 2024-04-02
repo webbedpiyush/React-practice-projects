@@ -71,6 +71,7 @@ export default function App() {
         <FormSplitBill
           selectedFriend={selectedFriend}
           onSplitBill={handleSplitBill}
+          key={selectedFriend.id}
         />
       )}
     </div>
@@ -172,6 +173,9 @@ function FormSplitBill({ selectedFriend, onSplitBill }) {
   /* what happens when a the form is open and other friend is selected without 
   closing the form and the state is not back to default but it remains same means the 
   component is not re rendered*/
+
+  /* this is happening because in the component tree the formsplitbill component always occupy the same space
+  but we know when friend is changed the component instance is also changed so to make it happen pass a key prop. */
 
   const [bill, setBill] = useState("");
   const [expense, setExpense] = useState("");
